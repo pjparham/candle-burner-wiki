@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Signup() {
     const [newUser, setNewUser] = useState({
@@ -16,11 +17,30 @@ export default function Signup() {
         })
     }
 
+    const navigate = useNavigate()
+
+    function handleSubmit(e){
+        e.preventDefault()
+   
+        fetch('/users', {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify(newUser)            
+        })
+        .then(r => {
+            if(r.ok){
+                navigate('/')
+                alert("Sign-up successful! Please login now.")
+            }
+            else {r.json().then(e => console.log(e))}
+        })
+    }
+
 
   return (
     <div>
         <h1>Signup</h1>
-        <form onSubmit={null}>
+        <form onSubmit={handleSubmit}>
             <label>
                 Pick your username
                 <br />
