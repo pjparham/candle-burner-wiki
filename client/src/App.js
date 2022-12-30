@@ -33,7 +33,7 @@ function App() {
   }, [currentUser])
 
 
-  console.log(favoriteCandles)
+
 
   if (!currentUser){
     return (

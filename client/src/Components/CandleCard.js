@@ -10,6 +10,7 @@ export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles
     
   // let likeCount = candle.favorites.length
 
+
   function updateFavorites(newFavorite){
     let newFavorites = [...favoriteCandles, newFavorite]
     setFavoriteCandles(newFavorites)
@@ -55,9 +56,9 @@ export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles
         <div className='card-engage'>
           <div onClick={handleLike} className='card-favorite'>
             {liked ? <i className="fa-solid fa-heart"></i> :  <i className="fa-regular fa-heart"></i>} 
-            {candle.favorites.length === 1 ? (likeCount) + " Like" : (likeCount) + " Likes"}
+            {" "}{candle.favorites.length === 1 ? (likeCount) + " Like" : (likeCount) + " Likes"}
             </div>
-          <div className='card-review'>Review</div>
+          <div className='card-review'><i className="fa-regular fa-comment"></i> {" "}{candle.reviews.length === 1 ? (candle.reviews.length ) + " Review" : (candle.reviews.length ) + " Reviews"}</div>
         </div>
     </div>
   )
