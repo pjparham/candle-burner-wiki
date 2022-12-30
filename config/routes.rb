@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: [:show, :create]
+  resources :users, only: [:show, :create, :index]
   resources :candles
   post "/login", to: "sessions#create"
   get "/auth", to: "users#show"

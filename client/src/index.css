@@ -22,12 +22,13 @@ code {
 
 .candle-card {
   background: #e6f1f2; 
-  border-radius: 4px;
-
+  border-radius: 6px;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .card-image {
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .card-title {
@@ -40,5 +41,18 @@ code {
 
 .card-info {
   font-weight: 700;
-  padding-bottom: 1.3rem;
+}
+
+.card-engage {
+  text-align: center;
+}
+
+.card-favorite {
+  float: left;
+  width: 50%;
+}
+
+.card-review {
+  float: right;
+  width: 50%;
 }

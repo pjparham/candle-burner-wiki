@@ -1,7 +1,7 @@
 import React from 'react'
 import CandleCard from './CandleCard'
 
-export default function CandleContainer({candles}) {
+export default function CandleContainer({candles, favoriteCandles }) {
   const displayCandleCards = candles.map((candle) => {
     return <CandleCard key={candle.id} candle={candle}/>
   })

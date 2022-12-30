@@ -11,6 +11,7 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "react-router-dom": "^6.6.1"
   }
 }

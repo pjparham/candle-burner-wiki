@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
   const [candles, setCandles] = useState([])
   const [currentUser, setCurrentUser] = useState()
+  const [favoriteCandles, setFavoriteCandles] = useState([])
 
   useEffect(() => {
     fetch("/candles")
@@ -15,7 +16,23 @@ function App() {
     .then((candles) => setCandles(candles))    
   }, [])
 
-  console.log(currentUser)
+  useEffect(()=> {
+    fetch('/auth')
+    .then(res => {
+      if(res.ok){
+        res.json().then(user=> setCurrentUser(user))
+      }
+    })
+  }, [])
+
+  useEffect(()=>{
+    if (currentUser){
+      let userCandles = currentUser.favorite_candles.map((favorite) => favorite.name)
+      setFavoriteCandles(userCandles)
+    }
+  }, [currentUser])
+
+
 
 
   if (!currentUser){
@@ -34,7 +51,7 @@ function App() {
     <div className="App">
       <div>Navbar</div>
       <Routes>
-        <Route exact path='/' element={<CandleContainer candles={candles}/>}/>
+        <Route exact path='/' element={<CandleContainer favoriteCandles={favoriteCandles} candles={candles}/>}/>
       </Routes>
 
     </div>
