@@ -51,7 +51,7 @@ function App() {
     <div className="App">
       <div>Navbar</div>
       <Routes>
-        <Route exact path='/' element={<CandleContainer favoriteCandles={favoriteCandles} candles={candles}/>}/>
+        <Route exact path='/' element={<CandleContainer setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} candles={candles}/>}/>
       </Routes>
 
     </div>

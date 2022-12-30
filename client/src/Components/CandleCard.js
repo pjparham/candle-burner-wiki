@@ -1,14 +1,43 @@
 import React from 'react'
 
-export default function CandleCard({ candle, favoriteCandles }) {
+export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles }) {
 
     const { name, notes, price, producer, image_url, size } = candle
-    // console.log(candle.favorites.length)
-    // console.log('from card', favoriteCandles)
-    // console.log('test from card', favoriteCandles.includes({name}), name)
-    // console.log(name === favoriteCandles[0], name, favoriteCandles[0])
 
     let liked = favoriteCandles.includes(name)
+    // {candle.favorites.length === 1 ? (candle.favorites.length) + " Like" : (candle.favorites.length) + " Likes"}
+    
+    console.log(candle.favorites.length)
+
+    function updateFavorites(newFavorite){
+      let newFavorites = [...favoriteCandles, newFavorite]
+      setFavoriteCandles(newFavorites)
+    }
+
+    function handleLike(e){
+      e.preventDefault()
+      if(liked){
+        const updatedFavorites = favoriteCandles.filter((c) => c.name !== name)
+        setFavoriteCandles(updatedFavorites)
+        fetch('/favorites', {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({"candle_id": candle.id})
+        })
+      } else {
+        fetch('/favorites', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({"candle_id": candle.id})
+        })
+        .then((r) => r.json())
+        .then((newFavorite) => updateFavorites(newFavorite))
+      }
+    }
 
 
   return (
@@ -18,7 +47,10 @@ export default function CandleCard({ candle, favoriteCandles }) {
         <p><i>Notes: {notes}</i></p>
         <p className='card-info'>{price} | {size} | {producer}</p>
         <div className='card-engage'>
-          <div className='card-favorite'>{liked ? <i className="fa-solid fa-heart"></i> :  <i className="fa-regular fa-heart"></i>}</div>
+          <div onClick={handleLike} className='card-favorite'>
+            {liked ? <i className="fa-solid fa-heart"></i> :  <i className="fa-regular fa-heart"></i>} 
+            {candle.favorites.length === 1 ? (candle.favorites.length) + " Like" : (candle.favorites.length) + " Likes"}
+            </div>
           <div className='card-review'>Review</div>
         </div>
     </div>
