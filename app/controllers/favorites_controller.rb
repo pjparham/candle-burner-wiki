@@ -3,7 +3,6 @@ class FavoritesController < ApplicationController
         user = User.find(session[:user_id])
         candle = Candle.find(params[:candle_id])
         favorite = Favorite.create(candle_id: candle.id, user_id: user.id)
-        byebug
         render json: favorite
     end
 
