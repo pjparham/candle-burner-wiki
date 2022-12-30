@@ -26,7 +26,7 @@ export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles
         },
         body: JSON.stringify({"candle_id": candle.id})
       })
-      const updatedFavorites = favoriteCandles.filter((c) => c.name !== name)
+      const updatedFavorites = favoriteCandles.filter((c) => c !== name)
       setFavoriteCandles(updatedFavorites)
       setLikeCount(likeCount - 1)
       setLiked(!liked)
@@ -39,7 +39,7 @@ export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles
         body: JSON.stringify({"candle_id": candle.id})
       })
       .then((r) => r.json())
-      .then((newFavorite) => updateFavorites(newFavorite))
+      .then((newFavorite) => updateFavorites(newFavorite.candle.name))
       setLikeCount(likeCount + 1)
       setLiked(!liked)
     }
