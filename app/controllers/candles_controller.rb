@@ -3,11 +3,11 @@ class CandlesController < ApplicationController
     before_action :set_candle, only: [:show, :update, :destroy]
 
     def index
-        render json: Candle.all
+        render json: Candle.all, include: ['reviews', 'favorites', 'reviews.user', 'favorites.user']
     end
 
     def show
-        render json: @candle
+        render json: @candle, include: ['reviews', 'favorites', 'reviews.user', 'favorites.user']
     end
 
     def create
