@@ -142,6 +142,15 @@ code {
   font-size: 20px;
 }
 
+.review-input {
+  width: 60%;
+  height: 7rem;
+}
+
+.review-submit {
+  margin-bottom: 1rem;
+}
+
 @media screen and (max-width: 735px){
 
   .candle-container{
