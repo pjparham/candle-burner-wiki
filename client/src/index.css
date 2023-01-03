@@ -11,8 +11,11 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+   
+  
+  monospace;
 }
+
 
 .candle-container {
   margin: auto;
@@ -57,6 +60,24 @@ code {
   width: 50%;
 }
 
+.form {
+  margin: auto;
+  margin-top: 2.6em;
+  width: 70%;
+  background: #ffffff; 
+  border-radius: 6px;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.form-title {
+  font-size: 35px;
+  padding-top: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  font-family: 'Merriweather', serif;
+}
+
 .navbar {
   width: 100%;
   background: #ffffff;
@@ -67,6 +88,7 @@ code {
 .nav-title {
   float: left;
   font-size: 60px;
+  color: black;
 }
 
 .links {
@@ -83,6 +105,8 @@ code {
   height: 35px;
   width: 11rem;
   border-radius: 17px;
+  font-weight: 600;
+  color: black;
 }
 
 .nav-profile {
