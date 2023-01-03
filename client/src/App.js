@@ -58,7 +58,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<CandleContainer setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} candles={candles}/>}/>
         <Route path='/candles/new' element={<CandleForm/>}/>
-        <Route path ='/candles/:id' element={<CandlePage candles={candles} setCandles={setCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles}/>}/>
+        <Route path ='/candles/:id' element={<CandlePage setCurrentUser={setCurrentUser} currentUser={currentUser} candles={candles} setCandles={setCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles}/>}/>
       </Routes>
 
     </div>

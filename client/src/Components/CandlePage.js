@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Reviews from './Reviews'
 
-export default function CandlePage({ candles, setCandles, favoriteCandles, setFavoriteCandles}) {
+export default function CandlePage({ candles, setCandles, favoriteCandles, setFavoriteCandles, currentUser, setCurrentUser}) {
     const params = useParams()
     const candle = candles.find(candle => candle.id === parseInt(params.id))
     const [likeCount, setLikeCount] = useState(candle.favorites.length)
@@ -42,7 +42,7 @@ export default function CandlePage({ candles, setCandles, favoriteCandles, setFa
           setLiked(!liked)
         }
       }
-    console.log(candle)
+
   return (
     <>
         <div className='candle-page'>
@@ -60,7 +60,7 @@ export default function CandlePage({ candles, setCandles, favoriteCandles, setFa
                 </Link>
             </div>
         </div>
-        <Reviews candle={candle}/>
+        <Reviews currentUser={currentUser} setCurrentUser={setCurrentUser} candle={candle}/>
     </>
   )
 }
