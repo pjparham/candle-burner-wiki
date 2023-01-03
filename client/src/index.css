@@ -32,6 +32,7 @@ code {
 
 .card-image {
   border-radius: 6px;
+  width: 80%;
 }
 
 .card-title {

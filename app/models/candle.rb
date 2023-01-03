@@ -10,5 +10,10 @@ class Candle < ApplicationRecord
     validates :size, presence: true
     validates :price, presence: true
     validates :image_url, presence: true
+    validate :price_has_correct_format
+
+    def price_has_correct_format
+        errors.add(:price, "Must being with $") unless price.downcase.start_with?('$')
+      end
 
 end

@@ -8,7 +8,7 @@ export default function Navbar( {name }) {
           <div className="nav-title">Burner</div>
         </NavLink>
         <div className="links">
-          <NavLink to="candles/new">
+          <NavLink to="/candles/new">
             <div className="nav-add">Add candle</div>
           </NavLink>
             <div className="nav-profile">{name}</div>

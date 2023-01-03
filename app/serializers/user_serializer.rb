@@ -3,5 +3,7 @@ class UserSerializer < ActiveModel::Serializer
   has_many :favorites
   has_many :reviews
   has_many :favorite_candles, serializer: FavoriteCandlesSerializer
+
+
 end
 

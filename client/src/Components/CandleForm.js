@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function CandleForm() {
     const [newCandle, setNewCandle] = useState({
@@ -9,6 +10,7 @@ export default function CandleForm() {
         "price": "",
         "image_url": ""
     })
+    const [errors, setErrors] = useState([])
 
     function handleChange(e){
         setNewCandle({
@@ -16,6 +18,8 @@ export default function CandleForm() {
             [e.target.name]: e.target.value,
         })
     }
+
+    const navigate = useNavigate()
 
     function handleSubmit(e){
         e.preventDefault()
@@ -26,17 +30,28 @@ export default function CandleForm() {
             },
             body: JSON.stringify(newCandle)
         })
-        .then((r) => r.json())
-        .then((newCandle) => console.log(newCandle))
-        setNewCandle({
-            "name": "",
-            "producer": "",
-            "notes": "",
-            "size": "",
-            "price": "",
-            "image_url": ""
+        .then((r) => {
+            if(r.ok){
+                r.json()
+                .then((newCandle) => console.log(newCandle))
+                setNewCandle({
+                    "name": "",
+                    "producer": "",
+                    "notes": "",
+                    "size": "",
+                    "price": "",
+                    "image_url": ""
+                })
+                navigate('/')
+            } else{
+                r.json().then(e => setErrors(e.errors))
+            }
         })
     }
+
+
+   
+
   return (
     <div className='form'>
         <h1 className="form-title">Don't see your favorite candle on our site? Submit it here!</h1>
@@ -53,11 +68,17 @@ export default function CandleForm() {
             <label>Size: <br/>
                 <input type="text" id="size" name="size" value={newCandle.size} onChange={handleChange}/>
             </label><br/>
+            <label>Price: <br/>
+                <input type="text" id="price" name="price" value={newCandle.price} onChange={handleChange}/>
+            </label><br/>
             <label>Image link: <br/>
                 <input type="text" id="image_url" name="image_url" value={newCandle.image_url} onChange={handleChange}/>
             </label><br/>
             <input type="submit" value="Submit"/>
         </form>
+        {errors.map((error) => {
+            return <li key={error}>{error}</li>
+        })}
     </div>
   )
 }

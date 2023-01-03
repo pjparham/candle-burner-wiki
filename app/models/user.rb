@@ -9,4 +9,8 @@ class User < ApplicationRecord
     validates :first_name, presence: true
     validates :last_name, presence: true
     validates :email, presence: true
+
+    def favorite_candles_names
+        self.favorite_candles.map { |candle| candle.name }
+    end
 end
