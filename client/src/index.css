@@ -6,7 +6,7 @@ body {
     sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background: #ffffff; */
+  background: #e6f1f2;
 }
 
 code {
@@ -21,7 +21,7 @@ code {
 }
 
 .candle-card {
-  background: #e6f1f2; 
+  background: #ffffff; 
   border-radius: 6px;
   padding-bottom: 2rem;
   margin-bottom: 1rem;
@@ -55,4 +55,50 @@ code {
 .card-review {
   float: right;
   width: 50%;
+}
+
+.navbar {
+  width: 100%;
+  background: #ffffff;
+  height: 80px;
+  justify-content: space-between;
+}
+
+.nav-title {
+  float: left;
+  font-size: 60px;
+}
+
+.links {
+  float: right;
+  justify-content: space-between;
+  margin-top: 1.3rem;
+  font-size: 25px;
+}
+
+.nav-add {
+  float: left;
+  margin-right: 1rem;
+  background: #e6f1f2;
+  height: 35px;
+  width: 11rem;
+  border-radius: 17px;
+}
+
+.nav-profile {
+  float: right;
+  margin-right: 1rem;
+}
+
+@media screen and (max-width: 735px){
+
+  .candle-container{
+    width: 95%;
+  }
+  .card-title{
+    font-size: 35px;
+  }
+  .card-image {
+    width: 15rem;
+  }
 }

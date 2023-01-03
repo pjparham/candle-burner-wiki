@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import CandleContainer from './Components/CandleContainer';
 import Login from './Components/Login';
+import Navbar from './Components/Navbar';
 import Signup from './Components/Signup';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
@@ -25,6 +26,8 @@ function App() {
     })
   }, [])
 
+  //this use effect sets the users favorite candles -> the if currentUser prevents error
+
   useEffect(()=>{
     if (currentUser){
       let userCandles = currentUser.favorite_candles.map((favorite) => favorite.name)
@@ -38,7 +41,7 @@ function App() {
   if (!currentUser){
     return (
       <div className="App">
-      <div>Navbar</div>
+      <Navbar name={"Sign-Up"}/>
       <Routes>
         <Route exact path='/' element={<Login setCurrentUser={setCurrentUser}/>}/>
         <Route exact path='/signup' element={<Signup/>}/>
@@ -49,7 +52,7 @@ function App() {
   }
   return (
     <div className="App">
-      <div>Navbar</div>
+      <Navbar name={currentUser.first_name + " " + currentUser.last_name}/>
       <Routes>
         <Route exact path='/' element={<CandleContainer setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} candles={candles}/>}/>
       </Routes>
