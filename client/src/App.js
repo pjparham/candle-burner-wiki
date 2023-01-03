@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import CandleContainer from './Components/CandleContainer';
 import CandleForm from './Components/CandleForm';
+import CandlePage from './Components/CandlePage';
 import Login from './Components/Login';
 import Navbar from './Components/Navbar';
 import Signup from './Components/Signup';
@@ -57,6 +58,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<CandleContainer setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} candles={candles}/>}/>
         <Route path='/candles/new' element={<CandleForm/>}/>
+        <Route path ='/candles/:id' element={<CandlePage candles={candles} setCandles={setCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles}/>}/>
       </Routes>
 
     </div>

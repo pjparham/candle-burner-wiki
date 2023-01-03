@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles }) {
   const { name, notes, price, producer, image_url, size } = candle
@@ -58,7 +59,9 @@ export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles
             {liked ? <i className="fa-solid fa-heart"></i> :  <i className="fa-regular fa-heart"></i>} 
             {" "}{candle.favorites.length === 1 ? (likeCount) + " Like" : (likeCount) + " Likes"}
             </div>
-          <div className='card-review'><i className="fa-regular fa-comment"></i> {" "}{candle.reviews.length === 1 ? (candle.reviews.length ) + " Review" : (candle.reviews.length ) + " Reviews"}</div>
+          <Link to={`/candles/${candle.id}`}>
+            <div className='card-review'><i className="fa-regular fa-comment"></i> {" "}{candle.reviews.length === 1 ? (candle.reviews.length ) + " Review" : (candle.reviews.length ) + " Reviews"}</div>
+          </Link>
         </div>
     </div>
   )
