@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create, :index]
   resources :candles
   resources :favorites, only: [:create]
-  resources :reviews, only: [:create]
+  resources :reviews, only: [:create, :destroy]
   patch "/reviews", to: "reviews#update"
   delete "/favorites", to: "favorites#destroy"
   post "/login", to: "sessions#create"
