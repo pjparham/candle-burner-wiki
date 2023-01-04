@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Reviews from './Reviews'
 
-export default function CandlePage({ candles, setCandles, favoriteCandles, setFavoriteCandles, currentUser, setCurrentUser}) {
+export default function CandlePage({ candles, setCandles, favoriteCandles, setFavoriteCandles, currentUser, setCurrentUser, updateCandles}) {
     const params = useParams()
-    const candle = candles.find(candle => candle.id === parseInt(params.id))
-    const [likeCount, setLikeCount] = useState(candle.favorites.length)
-    const [liked, setLiked] = useState(favoriteCandles.includes(candle.name))
+    let candle = candles.find(candle => candle.id === parseInt(params.id))
+    let liked = favoriteCandles.includes(candle.name)
 
     function updateFavorites(newFavorite){
-        let newFavorites = [...favoriteCandles, newFavorite]
-        setFavoriteCandles(newFavorites)
-      }
-    
+      let newFavorites = [...favoriteCandles, newFavorite]
+      setFavoriteCandles(newFavorites)
+      updateCandles()
+    }
+
     
       function handleLike(e){
         e.preventDefault()
@@ -26,8 +26,8 @@ export default function CandlePage({ candles, setCandles, favoriteCandles, setFa
           })
           const updatedFavorites = favoriteCandles.filter((c) => c !== candle.name)
           setFavoriteCandles(updatedFavorites)
-          setLikeCount(likeCount - 1)
-          setLiked(!liked)
+          updateCandles()
+          // setLiked(!liked)
         } else {
           fetch('/favorites', {
             method: "POST",
@@ -38,8 +38,7 @@ export default function CandlePage({ candles, setCandles, favoriteCandles, setFa
           })
           .then((r) => r.json())
           .then((newFavorite) => updateFavorites(newFavorite.candle.name))
-          setLikeCount(likeCount + 1)
-          setLiked(!liked)
+          // setLiked(!liked)
         }
       }
 
@@ -53,14 +52,14 @@ export default function CandlePage({ candles, setCandles, favoriteCandles, setFa
             <div className='card-engage'>
                 <div onClick={handleLike} className='card-favorite'>
                     {liked ? <i className="fa-solid fa-heart"></i> :  <i className="fa-regular fa-heart"></i>} 
-                    {" "}{candle.favorites.length === 1 ? (likeCount) + " Like" : (likeCount) + " Likes"}
+                    {" "}{candle.favorites.length === 1 ? (candle.favorites.length) + " Like" : (candle.favorites.length) + " Likes"}
                     </div>
                 <Link to={`/candles/${candle.id}`}>
                     <div className='card-review'><i className="fa-regular fa-comment"></i> {" "}{candle.reviews.length === 1 ? (candle.reviews.length ) + " Review" : (candle.reviews.length ) + " Reviews"}</div>
                 </Link>
             </div>
         </div>
-        <Reviews currentUser={currentUser} setCurrentUser={setCurrentUser} candle={candle}/>
+        <Reviews updateCandles={updateCandles} currentUser={currentUser} setCurrentUser={setCurrentUser} candle={candle}/>
     </>
   )
 }

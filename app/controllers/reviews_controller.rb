@@ -13,7 +13,6 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        byebug
         review = Review.find(params[:id])
         review.destroy
         head :no_content

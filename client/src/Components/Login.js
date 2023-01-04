@@ -14,8 +14,6 @@ export default function Login({setCurrentUser}) {
         })
     }
 
-
-
     function handleSubmit(e){
         e.preventDefault()
         fetch(`/login`, {
@@ -31,7 +29,6 @@ export default function Login({setCurrentUser}) {
             }
         })
     }
-
 
   return (
     <div>

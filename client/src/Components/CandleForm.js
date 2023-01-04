@@ -49,9 +49,6 @@ export default function CandleForm() {
         })
     }
 
-
-   
-
   return (
     <div className='form'>
         <h1 className="form-title">Don't see your favorite candle on our site? Submit it here!</h1>
@@ -82,52 +79,3 @@ export default function CandleForm() {
     </div>
   )
 }
-
-// /* <form onSubmit={handleSubmit}>
-// <label>Title: </label><br/>
-// <input type="text" id="name" name="name" value={newPiece.name} onChange={handleChange}/><br/>
-// <label>Artist: </label><br/>
-// <input type="text" id="artist" name="artist" value={newPiece.artist} onChange={handleChange}/><br/>
-// <label>Medium: </label><br/>
-// <input type="text" id="medium" name="medium" value={newPiece.medium} onChange={handleChange}/><br/>
-// <label>Height in inches: </label><br/>
-// <input type="text" id="inchHeight" name="inchHeight" value={newPiece.inchHeight} onChange={handleChange}/><br/>
-// <label>Width in inches: </label><br/>
-// <input type="text" id="inchWidth" name="inchWidth" value={newPiece.inchWidth} onChange={handleChange}/><br/>
-// <label>Year: </label><br/>
-// <input type="text" id="year" name="year" value={newPiece.year} onChange={handleChange}/><br/>
-// <label>Image URL: </label><br/>
-// <input type="text" id="imageUrl" name="imageUrl" value={newPiece.imageUrl} onChange={handleChange}/><br/><br/>
-// <input type="submit" value="Submit"/>
-// </form>
-
-
-// function handleAddArtwork(newArtwork){
-//     setArtworks([...artworks, newArtwork])
-//   }
-  
-//   function handleSubmit(e){
-//     e.preventDefault()
-//     fetch(`http://localhost:9292/artworks`, {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(newPiece)
-//     })
-//     .then((r) => r.json())
-//     .then((newArtwork) => handleAddArtwork(newArtwork))
-//     setNewPiece({
-//       "name": "",
-//       "artist": "",
-//       "medium": "",
-//       "inchHeight": "",
-//       "inchWidth": "",
-//       "year": "",
-//       "imageUrl": ""
-//     })
-//     console.log('submitted')
-//   }
-
-
-// export default function AddArtwork({ artworks, setArtworks }) 

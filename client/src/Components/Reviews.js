@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Review from './Review'
 
-export default function Reviews({candle, currentUser, setCurrentUser}) {
+export default function Reviews({candle, currentUser, setCurrentUser, updateCandles}) {
     const [review, setReview] = useState("")
     const [reviews, setReviews] = useState(candle.reviews)
 
@@ -17,10 +17,11 @@ export default function Reviews({candle, currentUser, setCurrentUser}) {
         })
         .then((r) => {
             if(r.ok){
-                console.log('success')
+                updateCandles()
+                const updatedReviews = reviews.filter((r) => r.id !== deletedReview.id)
+                setReviews(updatedReviews)
             }
         })
-        
       }
 
     let displayReviews = reviews.map((review) => {
@@ -35,9 +36,19 @@ export default function Reviews({candle, currentUser, setCurrentUser}) {
             }
             else {return review}
         })
+        const updatedUserReviews = currentUser.reviews.map((review) => {
+            if (review.id === updatedReview.id) {
+                return updatedReview
+            }
+            else {return review}
+        })
         setReviews(updatedReviews)
+        setCurrentUser({
+            ...currentUser,
+            reviews: updatedUserReviews
+        })
     }
- 
+
     function onSubmit(e){
         e.preventDefault()
         let newReview = {
@@ -54,6 +65,7 @@ export default function Reviews({candle, currentUser, setCurrentUser}) {
             })
             .then((r) => r.json())
             .then((updatedReview) => updateReviews(updatedReview) )
+            updateCandles()
             setReview("")
         } else{
             fetch('/reviews', {
@@ -66,15 +78,13 @@ export default function Reviews({candle, currentUser, setCurrentUser}) {
               .then((r) => r.json())
               .then((newReview) => setReviews([...reviews, newReview]))
               setReview("")
+              updateCandles()
               setCurrentUser({
                 ...currentUser,
                 reviews: [...currentUser.reviews, reviews[-1]]
               })
         }
     }
-
-
-  
 
   return (
     <div className="reviews-container">

@@ -13,7 +13,7 @@ export default function Review({review, hasReviewed, onDelete}) {
             <div className="review-username">
               {user.username}
             </div>
-            {hasReviewed ? <div onClick={onDeleteClick} className="review-delete"><i class="fa-solid fa-x"></i></div> : null}
+            {hasReviewed ? <div onClick={onDeleteClick} className="review-delete"><i className="fa-solid fa-x"></i></div> : null}
             <p>"{review.body}"</p>
         </div>
     </div>

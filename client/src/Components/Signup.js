@@ -10,8 +10,6 @@ export default function Signup() {
         "email": ""
     })
 
-    console.log('hey')
-
     function handleChange(e){
         setNewUser({
             ...newUser,

@@ -12,6 +12,7 @@ function App() {
   const [candles, setCandles] = useState([])
   const [currentUser, setCurrentUser] = useState()
   const [favoriteCandles, setFavoriteCandles] = useState([])
+  const [userReviews, setUserReviews] = useState([])
 
   useEffect(() => {
     fetch("/candles")
@@ -28,17 +29,25 @@ function App() {
     })
   }, [])
 
+  function updateCandles(){
+    fetch("/candles")
+    .then((r) => r.json())
+    .then((candles) => setCandles(candles))
+  }
+  // console.log(candles)
   //this use effect sets the users favorite candles -> the if currentUser prevents error
 
   useEffect(()=>{
     if (currentUser){
       let userCandles = currentUser.favorite_candles.map((favorite) => favorite.name)
       setFavoriteCandles(userCandles)
+      let currentUserReviews = currentUser.reviews
+      setUserReviews(currentUserReviews)
     }
   }, [currentUser])
 
 
-
+// console.log(currentUser.reviews)
 
   if (!currentUser){
     return (
@@ -56,9 +65,16 @@ function App() {
     <div className="App">
       <Navbar name={currentUser.first_name + " " + currentUser.last_name}/>
       <Routes>
-        <Route exact path='/' element={<CandleContainer setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} candles={candles}/>}/>
+        <Route exact path='/' element={<CandleContainer updateCandles={updateCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} candles={candles} setCandles={setCandles}/>}/>
         <Route path='/candles/new' element={<CandleForm/>}/>
-        <Route path ='/candles/:id' element={<CandlePage setCurrentUser={setCurrentUser} currentUser={currentUser} candles={candles} setCandles={setCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles}/>}/>
+        <Route path ='/candles/:id' element={<CandlePage 
+                                                updateCandles={updateCandles}
+                                                setCurrentUser={setCurrentUser} 
+                                                currentUser={currentUser} 
+                                                candles={candles} 
+                                                setCandles={setCandles} 
+                                                setFavoriteCandles={setFavoriteCandles} 
+                                                favoriteCandles={favoriteCandles}/>}/>
       </Routes>
 
     </div>
