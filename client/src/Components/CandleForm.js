@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function CandleForm() {
+export default function CandleForm({ addCandle }) {
     const [newCandle, setNewCandle] = useState({
         "name": "",
         "producer": "",
@@ -33,7 +33,7 @@ export default function CandleForm() {
         .then((r) => {
             if(r.ok){
                 r.json()
-                .then((newCandle) => console.log(newCandle))
+                .then((newCandle) => addCandle(newCandle))
                 setNewCandle({
                     "name": "",
                     "producer": "",

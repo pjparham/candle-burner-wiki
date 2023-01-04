@@ -20,6 +20,7 @@ function App() {
     .then((candles) => setCandles(candles))    
   }, [])
 
+
   useEffect(()=> {
     fetch('/auth')
     .then(res => {
@@ -34,7 +35,11 @@ function App() {
     .then((r) => r.json())
     .then((candles) => setCandles(candles))
   }
-  // console.log(candles)
+
+  function addCandle(newCandle){
+    let allCandles = [...candles, newCandle]
+    setCandles(allCandles)
+  }
   //this use effect sets the users favorite candles -> the if currentUser prevents error
 
   useEffect(()=>{
@@ -45,9 +50,6 @@ function App() {
       setUserReviews(currentUserReviews)
     }
   }, [currentUser])
-
-
-// console.log(currentUser.reviews)
 
   if (!currentUser){
     return (
@@ -66,7 +68,7 @@ function App() {
       <Navbar name={currentUser.first_name + " " + currentUser.last_name}/>
       <Routes>
         <Route exact path='/' element={<CandleContainer updateCandles={updateCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} candles={candles} setCandles={setCandles}/>}/>
-        <Route path='/candles/new' element={<CandleForm/>}/>
+        <Route path='/candles/new' element={<CandleForm addCandle={addCandle}/>}/>
         <Route path ='/candles/:id' element={<CandlePage 
                                                 updateCandles={updateCandles}
                                                 setCurrentUser={setCurrentUser} 
