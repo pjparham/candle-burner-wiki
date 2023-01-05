@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Review from './Review'
 
-export default function Reviews({candle, currentUser, setCurrentUser, updateCandles}) {
+export default function Reviews({candle, currentUser, setCurrentUser, updateCandles, candles, setCandles, userReviews, setUserReviews}) {
+    //state for controlled form
     const [review, setReview] = useState("")
-    // const [reviews, setReviews] = useState(candle.reviews)
+
     let reviews = candle.reviews
 
     //gets array of usernames for users that have reviewed current candle
@@ -18,38 +19,69 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
         })
         .then((r) => {
             if(r.ok){
-                updateCandles()
-                reviews = candle.reviews
-                const updatedReviews = reviews.filter((r) => r.id !== deletedReview.id)
-                // setReviews(updatedReviews)
+                //sets state for user reviews
+                let updatedReviews = userReviews.filter((review) => review.id !== deletedReview.id)
+                setUserReviews(updatedReviews)
+                //sets state for candles
+                let updatedCandleReviews = candle.reviews.filter((review) => review.id !== deletedReview.id)
+                let updatedCandles = candles.map((aCandle) => {
+                    if (aCandle.id === candle.id){
+                        let updatedCandle = {
+                            ...candle,
+                            reviews: updatedCandleReviews
+                        }
+                        return updatedCandle
+                    } else {return aCandle}
+                })
+                setCandles(updatedCandles)
             }
         })
       }
 
-    let displayReviews = reviews.map((review) => {
+    let displayReviews = candle.reviews.map((review) => {
         return <Review onDelete={onDelete}hasReviewed={hasReviewed} review={review} key={review.id}/>
     })
 
 
     function updateReviews(updatedReview){
-        const updatedReviews = reviews.map((review) => {
+        //sets userReview state to include updated review
+        let updatedUserReviews = userReviews.map((review) => {
             if (review.id === updatedReview.id){
                 return updatedReview
-            }
-            else {return review}
+            } else {return review}
         })
-        const updatedUserReviews = currentUser.reviews.map((review) => {
-            if (review.id === updatedReview.id) {
+        setUserReviews(updatedUserReviews)
+        //sets candles state to include updated review
+        // updatedCandleReviews gets the correct review array for the current candle
+        let updatedCandleReviews = candle.reviews.map((review) =>{
+            if (review.id === updatedReview.id){
                 return updatedReview
-            }
-            else {return review}
+            } else {return review}
         })
-        // setReviews(updatedReviews)
-        reviews = candle.reviews
-        setCurrentUser({
-            ...currentUser,
-            reviews: updatedUserReviews
+        let updatedCandles = candles.map((aCandle) => {
+            if (aCandle.id === candle.id){
+                let updatedCandle = {
+                    ...candle,
+                    reviews: updatedCandleReviews
+                }
+                return updatedCandle
+            } else {return aCandle}
         })
+        setCandles(updatedCandles)
+    }
+
+    function addReview(newReview){
+        setUserReviews([...userReviews, newReview])
+        let updatedCandles = candles.map((aCandle) => {
+            if (aCandle.id === candle.id){
+                let updatedCandle = {
+                    ...candle,
+                    reviews: [...candle.reviews, newReview]
+                }
+                return updatedCandle
+            } else {return aCandle}
+        })
+        setCandles(updatedCandles)
     }
 
     function onSubmit(e){
@@ -68,7 +100,6 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
             })
             .then((r) => r.json())
             .then((updatedReview) => updateReviews(updatedReview) )
-            updateCandles()
             setReview("")
         } else{
             fetch('/reviews', {
@@ -79,14 +110,14 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
                 body: JSON.stringify(newReview)
               })
               .then((r) => r.json())
-            //   .then((newReview) => setReviews([...reviews, newReview]))
+              .then((newReview) => addReview(newReview))
               setReview("")
-              updateCandles()
-              reviews = candle.reviews
-              setCurrentUser({
-                ...currentUser,
-                reviews: [...currentUser.reviews, reviews[-1]]
-              })
+            //   updateCandles()
+            //   reviews = candle.reviews
+            //   setCurrentUser({
+            //     ...currentUser,
+            //     reviews: [...currentUser.reviews, reviews[-1]]
+            //   })
         }
     }
 

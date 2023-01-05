@@ -2,21 +2,49 @@ import React, { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Reviews from './Reviews'
 
-export default function CandlePage({ candles, setCandles, favoriteCandles, setFavoriteCandles, currentUser, setCurrentUser, updateCandles}) {
+export default function CandlePage({ candles, setCandles, favoriteCandles, setFavoriteCandles, currentUser, setCurrentUser, updateCandles, userReviews, setUserReviews}) {
     const params = useParams()
     let candle = candles.find(candle => candle.id === parseInt(params.id))
-    let liked = favoriteCandles.includes(candle.name)
+
+    let liked = candle.favorites.map((favorite)=> {
+      if (favorite.user_id === currentUser.id){
+        return true
+      } else {return false}
+    })
 
     function updateFavorites(newFavorite){
-      let newFavorites = [...favoriteCandles, newFavorite]
+      let newFavorites = [...favoriteCandles, newFavorite.candle.name]
       setFavoriteCandles(newFavorites)
-      updateCandles()
+      let updatedCandles = candles.map((aCandle) => {
+        if (aCandle.id === candle.id){
+          let updatedCandle = {
+            ...candle,
+            favorites: [...candle.favorites, newFavorite]
+          }
+          return updatedCandle
+        }
+        else {return aCandle}
+      })
+      setCandles(updatedCandles)
     }
 
+    function deleteFavorite(){
+      let updatedFavorites = candle.favorites.filter((favorite) => favorite.user_id !== currentUser.id)
+      let updatedCandles = candles.map((aCandle) => {
+        if (aCandle.id === candle.id){
+          let updatedCandle = {
+            ...candle,
+            favorites: updatedFavorites
+          }
+          return updatedCandle
+        } else {return aCandle}
+      })
+      setCandles(updatedCandles)
+    }
     
       function handleLike(e){
         e.preventDefault()
-        if(liked){
+        if(liked.includes(true)){
           fetch('/favorites', {
             method: "DELETE",
             headers: {
@@ -26,8 +54,7 @@ export default function CandlePage({ candles, setCandles, favoriteCandles, setFa
           })
           const updatedFavorites = favoriteCandles.filter((c) => c !== candle.name)
           setFavoriteCandles(updatedFavorites)
-          updateCandles()
-          // setLiked(!liked)
+          deleteFavorite()
         } else {
           fetch('/favorites', {
             method: "POST",
@@ -37,8 +64,7 @@ export default function CandlePage({ candles, setCandles, favoriteCandles, setFa
             body: JSON.stringify({"candle_id": candle.id})
           })
           .then((r) => r.json())
-          .then((newFavorite) => updateFavorites(newFavorite.candle.name))
-          // setLiked(!liked)
+          .then((newFavorite) => updateFavorites(newFavorite))
         }
       }
 
@@ -51,7 +77,7 @@ export default function CandlePage({ candles, setCandles, favoriteCandles, setFa
             <p className='card-info'>{candle.price} | {candle.size} | {candle.producer}</p>
             <div className='card-engage'>
                 <div onClick={handleLike} className='card-favorite'>
-                    {liked ? <i className="fa-solid fa-heart"></i> :  <i className="fa-regular fa-heart"></i>} 
+                    {liked.includes(true) ? <i className="fa-solid fa-heart"></i> :  <i className="fa-regular fa-heart"></i>} 
                     {" "}{candle.favorites.length === 1 ? (candle.favorites.length) + " Like" : (candle.favorites.length) + " Likes"}
                     </div>
                 <Link to={`/candles/${candle.id}`}>
@@ -59,7 +85,7 @@ export default function CandlePage({ candles, setCandles, favoriteCandles, setFa
                 </Link>
             </div>
         </div>
-        <Reviews updateCandles={updateCandles} currentUser={currentUser} setCurrentUser={setCurrentUser} candle={candle}/>
+        <Reviews userReviews={userReviews} setUserReviews={setUserReviews} candles={candles} setCandles={setCandles} currentUser={currentUser} setCurrentUser={setCurrentUser} candle={candle}/>
     </>
   )
 }

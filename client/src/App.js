@@ -21,6 +21,8 @@ function App() {
     .then((candles) => setCandles(candles))    
   }, [])
 
+console.log(userReviews)
+
 
   useEffect(()=> {
     fetch('/auth')
@@ -68,10 +70,12 @@ function App() {
     <div className="App">
       <Navbar  name={currentUser.first_name + " " + currentUser.last_name}/>
       <Routes>
-        <Route exact path='/' element={<CandleContainer updateCandles={updateCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} candles={candles} setCandles={setCandles}/>}/>
+        <Route exact path='/' element={<CandleContainer currentUser={currentUser} updateCandles={updateCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} candles={candles} setCandles={setCandles}/>}/>
         <Route path='/candles/new' element={<CandleForm addCandle={addCandle}/>}/>
         <Route path ='/candles/:id' element={<CandlePage 
                                                 updateCandles={updateCandles}
+                                                userReviews={userReviews}
+                                                setUserReviews={setUserReviews}
                                                 setCurrentUser={setCurrentUser} 
                                                 currentUser={currentUser} 
                                                 candles={candles} 

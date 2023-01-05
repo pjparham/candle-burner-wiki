@@ -1,24 +1,48 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles, candles, setCandles, updateCandles }) {
+export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles, candles, setCandles, currentUser }) {
   const { name, notes, price, producer, image_url, size } = candle
-  const [likeCount, setLikeCount] = useState(candle.favorites.length)
-  // const [liked, setLiked] = useState(favoriteCandles.includes(name))
-  let liked = favoriteCandles.includes(name)
 
- 
+  let liked = candle.favorites.map((favorite)=> {
+    if (favorite.user_id === currentUser.id){
+      return true
+    } else {return false}
+  })
 
   function updateFavorites(newFavorite){
     let newFavorites = [...favoriteCandles, newFavorite.candle.name]
     setFavoriteCandles(newFavorites)
-    updateCandles()
-    setLikeCount(candle.favorites.length)
+    let updatedCandles = candles.map((aCandle) => {
+      if (aCandle.id === candle.id){
+        let updatedCandle = {
+          ...candle,
+          favorites: [...candle.favorites, newFavorite]
+        }
+        return updatedCandle
+      }
+      else {return aCandle}
+    })
+    setCandles(updatedCandles)
+  }
+
+  function deleteFavorite(){
+    let updatedFavorites = candle.favorites.filter((favorite) => favorite.user_id !== currentUser.id)
+    let updatedCandles = candles.map((aCandle) => {
+      if (aCandle.id === candle.id){
+        let updatedCandle = {
+          ...candle,
+          favorites: updatedFavorites
+        }
+        return updatedCandle
+      } else {return aCandle}
+    })
+    setCandles(updatedCandles)
   }
 
   function handleLike(e){
     e.preventDefault()
-    if(liked){
+    if(liked.includes(true)){
       fetch('/favorites', {
         method: "DELETE",
         headers: {
@@ -28,9 +52,7 @@ export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles
       })
       const updatedFavorites = favoriteCandles.filter((c) => c !== name)
       setFavoriteCandles(updatedFavorites)
-      updateCandles()
-      setLikeCount(candle.favorites.length)
-      // setLiked(!liked)
+      deleteFavorite()
     } else {
       fetch('/favorites', {
         method: "POST",
@@ -41,7 +63,6 @@ export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles
       })
       .then((r) => r.json())
       .then((newFavorite) => updateFavorites(newFavorite))
-      // setLiked(!liked)
     }
   }
 
@@ -54,7 +75,7 @@ export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles
         <p className='card-info'>{price} | {size} | {producer}</p>
         <div className='card-engage'>
           <div onClick={handleLike} className='card-favorite'>
-            {liked ? <i className="fa-solid fa-heart"></i> :  <i className="fa-regular fa-heart"></i>} 
+            {liked.includes(true) ? <i className="fa-solid fa-heart"></i> :  <i className="fa-regular fa-heart"></i>} 
             {" "}{candle.favorites.length === 1 ? (candle.favorites.length) + " Like" : (candle.favorites.length) + " Likes"}
             </div>
           <Link to={`/candles/${candle.id}`}>
