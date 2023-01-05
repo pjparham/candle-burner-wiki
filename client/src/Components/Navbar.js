@@ -11,7 +11,9 @@ export default function Navbar( {name }) {
           <NavLink to="/candles/new">
             <div className="nav-add">Add candle</div>
           </NavLink>
+          <NavLink to={`/profile`}>
             <div className="nav-profile">{name}</div>
+          </NavLink>
         </div>
     </div>
   )

@@ -124,6 +124,47 @@ code {
 .nav-profile {
   float: right;
   margin-right: 1rem;
+  color: black;
+}
+
+.profile-container {
+  margin: auto;
+  margin-top: 2.6em;
+  width: 90%;
+}
+
+.profile-box {
+  width: 30%;
+  background: #ffffff; 
+  border-radius: 6px;
+}
+
+.profile-info {
+  float: left;
+}
+
+.profile-favorites {
+  float: left;
+  margin-left: 5%;
+}
+
+.profile-favorite-image {
+  width: 90%;
+}
+
+.profile-favorite-title {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+}
+
+.profile-link {
+  text-decoration: none;
+}
+
+.profile-reviews {
+  float: right;
 }
 
 .review-container {

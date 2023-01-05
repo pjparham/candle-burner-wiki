@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Review from './Review'
 
 export default function Reviews({candle, currentUser, setCurrentUser, updateCandles}) {
     const [review, setReview] = useState("")
-    const [reviews, setReviews] = useState(candle.reviews)
+    // const [reviews, setReviews] = useState(candle.reviews)
+    let reviews = candle.reviews
 
     //gets array of usernames for users that have reviewed current candle
     let reviewers = candle.reviews.map((review) => review.user.username)
@@ -18,8 +19,9 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
         .then((r) => {
             if(r.ok){
                 updateCandles()
+                reviews = candle.reviews
                 const updatedReviews = reviews.filter((r) => r.id !== deletedReview.id)
-                setReviews(updatedReviews)
+                // setReviews(updatedReviews)
             }
         })
       }
@@ -42,7 +44,8 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
             }
             else {return review}
         })
-        setReviews(updatedReviews)
+        // setReviews(updatedReviews)
+        reviews = candle.reviews
         setCurrentUser({
             ...currentUser,
             reviews: updatedUserReviews
@@ -76,9 +79,10 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
                 body: JSON.stringify(newReview)
               })
               .then((r) => r.json())
-              .then((newReview) => setReviews([...reviews, newReview]))
+            //   .then((newReview) => setReviews([...reviews, newReview]))
               setReview("")
               updateCandles()
+              reviews = candle.reviews
               setCurrentUser({
                 ...currentUser,
                 reviews: [...currentUser.reviews, reviews[-1]]
