@@ -56,19 +56,19 @@ export default function CandleForm({ addCandle }) {
             <label>Name: {"   "}  
                 <input type="text" id="name" name="name" value={newCandle.name} onChange={handleChange}/>
             </label><br/>
-            <label>Producer: <br/>
+            <label>Producer: 
                 <input type="text" id="producer" name="producer" value={newCandle.producer} onChange={handleChange}/>
             </label><br/>
-            <label>Notes: <br/>
+            <label>Notes: 
                 <input type="text" id="notes" name="notes" value={newCandle.notes} onChange={handleChange}/>
             </label><br/>
-            <label>Size: <br/>
+            <label>Size: 
                 <input type="text" id="size" name="size" value={newCandle.size} onChange={handleChange}/>
             </label><br/>
-            <label>Price: <br/>
+            <label>Price: 
                 <input type="text" id="price" name="price" value={newCandle.price} onChange={handleChange}/>
             </label><br/>
-            <label>Image link: <br/>
+            <label>Image link: 
                 <input type="text" id="image_url" name="image_url" value={newCandle.image_url} onChange={handleChange}/>
             </label><br/>
             <input type="submit" value="Submit"/>

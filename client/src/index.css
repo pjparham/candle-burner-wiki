@@ -233,4 +233,72 @@ code {
   .card-image {
     width: 15rem;
   }
+
+  .form {
+    width: 90%;
+  }
+
+  .form-title {
+    font-size: 30px;
+  }
+
 }
+
+@media screen and (max-width: 575px){
+
+  .navbar{
+    height: 50px;
+  }
+
+  .nav-title {
+    font-size: 40px;
+  }
+
+  .links {
+    font-size: 18px;
+    margin-top: 1rem;
+  }
+
+  .nav-add { 
+    width: 7rem;
+    font-weight: 600;
+    margin-right: .5rem;
+    height: 28px;
+  }
+
+  .nav-profile {
+    margin-right: .5rem;
+  }
+
+}
+
+/* .navbar {
+
+  height: 80px;
+
+}
+
+.nav-title {
+  font-size: 60px;
+}
+
+.links {
+  margin-top: 1.3rem;
+  font-size: 25px;
+}
+
+.nav-add {
+  margin-right: 1rem;
+  background: #e6f1f2;
+  height: 35px;
+  width: 11rem;
+  border-radius: 17px;
+  font-weight: 600;
+  color: black;
+}
+
+.nav-profile {
+  float: right;
+  margin-right: 1rem;
+  color: black;
+} */
