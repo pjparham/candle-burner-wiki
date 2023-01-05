@@ -21,9 +21,9 @@ function App() {
     .then((candles) => setCandles(candles))    
   }, [])
 
-console.log(userReviews)
+// console.log(userReviews)
 
-
+ console.log(currentUser)
   useEffect(()=> {
     fetch('/auth')
     .then(res => {

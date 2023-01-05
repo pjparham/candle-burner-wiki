@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     def show
         current_user = User.find(session[:user_id])
-        render json: current_user
+        render json: current_user, include: ['reviews', 'reviews.candle', 'favorite_candles']
     end
 
     private
