@@ -1,7 +1,8 @@
 import React from 'react'
 import ProfileFavorites from './ProfileFavorites'
+import ProfileReviews from './ProfileReviews'
 
-export default function Profile({ user, candles, favoriteCandles }) {
+export default function Profile({ user, userReviews, candles, favoriteCandles }) {
   
     let allFavoriteCandles = candles.filter((candle) => {
         if (favoriteCandles.includes(candle.name)){
@@ -10,7 +11,11 @@ export default function Profile({ user, candles, favoriteCandles }) {
     })
 
     let displayFavorites = allFavoriteCandles.map((candle) => {
-        return <ProfileFavorites candle={candle}/>
+        return <ProfileFavorites key={candle.id} candle={candle}/>
+    })
+
+    let displayReviews = userReviews.map((review) => {
+        return <ProfileReviews review={review} key={review.id}/>
     })
 
   return (
@@ -25,7 +30,8 @@ export default function Profile({ user, candles, favoriteCandles }) {
             {displayFavorites}
         </div>
         <div className='profile-reviews profile-box'>
-            reviews
+            Your reviews
+            {displayReviews}
         </div>
     </div>
   )

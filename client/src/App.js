@@ -21,9 +21,9 @@ function App() {
     .then((candles) => setCandles(candles))    
   }, [])
 
-// console.log(userReviews)
+console.log(userReviews)
 
- console.log(currentUser)
+
   useEffect(()=> {
     fetch('/auth')
     .then(res => {
@@ -82,7 +82,7 @@ function App() {
                                                 setCandles={setCandles} 
                                                 setFavoriteCandles={setFavoriteCandles} 
                                                 favoriteCandles={favoriteCandles}/>}/>
-        <Route path='/profile' element={<Profile user={currentUser} favoriteCandles={favoriteCandles} candles={candles} />}/>
+        <Route path='/profile' element={<Profile user={currentUser} userReviews={userReviews} favoriteCandles={favoriteCandles} candles={candles} />}/>
       </Routes>
 
     </div>

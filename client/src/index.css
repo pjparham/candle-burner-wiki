@@ -167,6 +167,16 @@ code {
   float: right;
 }
 
+.profile-review {
+  background: #e8e8e8;
+  margin: 10px 3px 10px 3px;
+  border-radius: 6px;
+}
+
+.profile-review-title {
+  font-weight: 600;
+}
+
 .review-container {
   background: white;
   width: 70%;
