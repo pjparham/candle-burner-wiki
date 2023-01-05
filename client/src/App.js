@@ -44,6 +44,12 @@ console.log(userReviews)
     setCandles(allCandles)
   }
 
+  function onLogout(){
+    setCurrentUser()
+    setFavoriteCandles([])
+    setUserReviews([])
+  }
+
   //this use effect sets the users favorite candles -> the if currentUser prevents error
   useEffect(()=>{
     if (currentUser){
@@ -82,7 +88,7 @@ console.log(userReviews)
                                                 setCandles={setCandles} 
                                                 setFavoriteCandles={setFavoriteCandles} 
                                                 favoriteCandles={favoriteCandles}/>}/>
-        <Route path='/profile' element={<Profile user={currentUser} userReviews={userReviews} favoriteCandles={favoriteCandles} candles={candles} />}/>
+        <Route path='/profile' element={<Profile onLogout={onLogout}user={currentUser} userReviews={userReviews} favoriteCandles={favoriteCandles} candles={candles} />}/>
       </Routes>
 
     </div>

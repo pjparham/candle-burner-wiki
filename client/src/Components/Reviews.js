@@ -5,7 +5,7 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
     //state for controlled form
     const [review, setReview] = useState("")
 
-    let reviews = candle.reviews
+
 
     //gets array of usernames for users that have reviewed current candle
     let reviewers = candle.reviews.map((review) => review.user.username)
@@ -39,7 +39,7 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
       }
 
     let displayReviews = candle.reviews.map((review) => {
-        return <Review onDelete={onDelete}hasReviewed={hasReviewed} review={review} key={review.id}/>
+        return <Review onDelete={onDelete} currentUser={currentUser} review={review} key={review.id}/>
     })
 
 

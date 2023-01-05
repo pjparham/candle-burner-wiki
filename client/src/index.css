@@ -179,6 +179,18 @@ code {
   font-weight: 600;
 }
 
+.logout-button {
+  margin: auto;
+  font-size: 23px;
+  background: #e6f1f2;
+  height: 35px;
+  width: 8rem;
+  border-radius: 17px;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 1rem;
+}
+
 .review-container {
   background: white;
   width: 70%;
