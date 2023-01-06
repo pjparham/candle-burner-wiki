@@ -30,19 +30,24 @@ export default function Profile({ user, onLogout, userReviews, candles, favorite
 
   return (
     <div className='profile-container'>
-        <div className='profile-info profile-box'>
-            <h3>{user.first_name + " " + user.last_name}</h3>
-            <p>Username: {user.username}</p>
-            <p>E-mail: {user.email}</p>
-            <div onClick={handleLogout} className='logout-button'>Logout</div>
+        <div className='profile-left'>
+              <div className='profile-favorites profile-box'>
+                <span className='profile-title'>{user.first_name}'s favorites</span>
+                {displayFavorites}
+            </div>
         </div>
-        <div className='profile-favorites profile-box'>
-            Your favorites
-            {displayFavorites}
-        </div>
-        <div className='profile-reviews profile-box'>
-            Your reviews
-            {displayReviews}
+        <div className='profile-right'>
+            <div className='profile-info profile-box'>
+                <h3>{user.first_name + " " + user.last_name}</h3>
+                <p>Username: {user.username}</p>
+                <p>E-mail: {user.email}</p>
+                <div onClick={handleLogout} className='logout-button'>Logout</div>
+            </div>
+            <div className='profile-reviews profile-box'>
+                <span className='profile-title'>{user.first_name}'s reviews</span>
+                {displayReviews}
+            </div>
+        
         </div>
     </div>
   )

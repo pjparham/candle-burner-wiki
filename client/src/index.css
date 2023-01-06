@@ -156,19 +156,40 @@ code {
 }
 
 .profile-box {
-  width: 30%;
+  width: 90%;
   background: #ffffff; 
   border-radius: 6px;
 }
 
-.profile-info {
+
+.profile-left {
   float: left;
+  width: 50%;
 }
 
-.profile-favorites {
-  float: left;
-  margin-left: 5%;
+.profile-right {
+  float: right;
+  width: 50%;
+  margin: 0;
+  margin-right: -10px;
 }
+
+.profile-info {
+  padding: 1px;
+  margin-bottom: 1rem;
+}
+
+.profile-title {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.profile-reviews {
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+}
+
+
 
 .profile-favorite-image {
   width: 90%;
@@ -183,10 +204,6 @@ code {
 
 .profile-link {
   text-decoration: none;
-}
-
-.profile-reviews {
-  float: right;
 }
 
 .profile-review {
@@ -263,6 +280,10 @@ code {
   .candle-container{
     width: 95%;
   }
+
+  .candle-page {
+    width: 95%;
+  }
   .card-title{
     font-size: 35px;
   }
@@ -274,9 +295,22 @@ code {
     width: 90%;
   }
 
-  .form-title {
-    font-size: 30px;
+  .form-label {
+    margin-left: 1rem;
   }
+
+  .form-input {
+    margin-right: 1rem;
+  }
+
+  .form-title {
+    font-size: 23px;
+  }
+
+  .review-container {
+    width: 95%;
+  }
+
 
 }
 

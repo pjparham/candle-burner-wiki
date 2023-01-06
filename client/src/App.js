@@ -21,7 +21,7 @@ function App() {
     .then((candles) => setCandles(candles))    
   }, [])
 
-console.log(userReviews)
+
 
 
   useEffect(()=> {

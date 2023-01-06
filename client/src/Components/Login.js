@@ -23,7 +23,7 @@ export default function Login({setCurrentUser}) {
         })
         .then(res => {
             if (res.ok){
-                res.json().then(setCurrentUser) && console.log('success')
+                res.json().then(setCurrentUser)
             } else {
                 alert("Wrong username or password")
             }

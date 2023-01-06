@@ -1,6 +1,7 @@
 class CandlesController < ApplicationController
 
     before_action :set_candle, only: [:show, :update, :destroy]
+    skip_before_action :authorized, only: :index
 
     def index
         render json: Candle.all, include: ['reviews', 'favorites', 'reviews.user', 'favorites.user']

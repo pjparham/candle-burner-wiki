@@ -51,7 +51,7 @@ export default function CandleForm({ addCandle }) {
 
   return (
     <div className='form'>
-        <h1 className="form-title">Don't see your favorite candle on our site? Submit it here!</h1>
+        <h1 className="form-title">Don't see your favorite candle on our site?<br/> Submit it here!</h1>
         <form onSubmit={handleSubmit}>
             <label   ><span className='form-label'>Name: {"   "} </span>
                 <input className='form-input' type="text" id="name" name="name" value={newCandle.name} onChange={handleChange}/>
