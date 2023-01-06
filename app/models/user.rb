@@ -8,7 +8,7 @@ class User < ApplicationRecord
     validates :username, presence: true, length: { in: 6..20 }, uniqueness: true
     validates :first_name, presence: true
     validates :last_name, presence: true
-    validates :email, presence: true
+    validates :email, presence: true, uniqueness: true;
 
     def favorite_candles_names
         self.favorite_candles.map { |candle| candle.name }

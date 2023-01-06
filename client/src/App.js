@@ -63,7 +63,7 @@ console.log(userReviews)
   if (!currentUser){
     return (
       <div className="App">
-      <Navbar name={"Sign-Up"}/>
+      <Navbar currentUser={currentUser} name={"Sign-Up"}/>
       <Routes>
         <Route exact path='/' element={<Login setCurrentUser={setCurrentUser}/>}/>
         <Route exact path='/signup' element={<Signup/>}/>
@@ -74,7 +74,7 @@ console.log(userReviews)
   }
   return (
     <div className="App">
-      <Navbar  name={currentUser.first_name + " " + currentUser.last_name}/>
+      <Navbar  currentUser={currentUser} name={currentUser.first_name + " " + currentUser.last_name}/>
       <Routes>
         <Route exact path='/' element={<CandleContainer currentUser={currentUser} updateCandles={updateCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} candles={candles} setCandles={setCandles}/>}/>
         <Route path='/candles/new' element={<CandleForm addCandle={addCandle}/>}/>

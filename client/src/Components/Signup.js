@@ -9,6 +9,7 @@ export default function Signup() {
         "last_name": "",
         "email": ""
     })
+    const [errors, setErrors] = useState([])
 
     function handleChange(e){
         setNewUser({
@@ -32,7 +33,7 @@ export default function Signup() {
                 navigate('/')
                 alert("Sign-up successful! Please login now.")
             }
-            else {r.json().then(e => console.log(e))}
+            else {r.json().then(e => setErrors(e.errors))}
         })
     }
 
@@ -68,6 +69,11 @@ export default function Signup() {
             </label> <br/>
             <input type="submit" value="Sign-Up"/>
         </form>
+        <div className='error-container'>
+        {errors.map((error) => {
+            return <li className='error' key={error}>{error}</li>
+        })}
+        </div>
     </div>
   )
 }

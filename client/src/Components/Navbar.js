@@ -1,17 +1,17 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default function Navbar( {name }) {
+export default function Navbar( {currentUser, name }) {
   return (
     <div className="navbar">
         <NavLink to="/">
           <div className="nav-title">Burner</div>
         </NavLink>
         <div className="links">
-          <NavLink to="/candles/new">
+          {currentUser ? <NavLink to="/candles/new">
             <div className="nav-add">Add candle</div>
-          </NavLink>
-          <NavLink to={`/profile`}>
+          </NavLink> : null }
+          <NavLink to={currentUser ? `/profile`: '/signup'}>
             <div className="nav-profile">{name}</div>
           </NavLink>
         </div>
