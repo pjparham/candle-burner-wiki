@@ -53,29 +53,31 @@ export default function CandleForm({ addCandle }) {
     <div className='form'>
         <h1 className="form-title">Don't see your favorite candle on our site? Submit it here!</h1>
         <form onSubmit={handleSubmit}>
-            <label>Name: {"   "}  
-                <input type="text" id="name" name="name" value={newCandle.name} onChange={handleChange}/>
-            </label><br/>
-            <label>Producer: 
-                <input type="text" id="producer" name="producer" value={newCandle.producer} onChange={handleChange}/>
-            </label><br/>
-            <label>Notes: 
-                <input type="text" id="notes" name="notes" value={newCandle.notes} onChange={handleChange}/>
-            </label><br/>
-            <label>Size: 
-                <input type="text" id="size" name="size" value={newCandle.size} onChange={handleChange}/>
-            </label><br/>
-            <label>Price: 
-                <input type="text" id="price" name="price" value={newCandle.price} onChange={handleChange}/>
-            </label><br/>
-            <label>Image link: 
-                <input type="text" id="image_url" name="image_url" value={newCandle.image_url} onChange={handleChange}/>
-            </label><br/>
-            <input type="submit" value="Submit"/>
+            <label   ><span className='form-label'>Name: {"   "} </span>
+                <input className='form-input' type="text" id="name" name="name" value={newCandle.name} onChange={handleChange}/>
+            </label><br/><br/>
+            <label><span className='form-label'>Producer: {"   "} </span>
+                <input className='form-input' type="text" id="producer" name="producer" value={newCandle.producer} onChange={handleChange}/>
+            </label><br/><br/>
+            <label><span className='form-label'>Notes: {"   "} </span>
+                <input className='form-input' type="text" id="notes" name="notes" value={newCandle.notes} onChange={handleChange}/>
+            </label><br/><br/>
+            <label><span className='form-label'>Size: {"   "} </span>
+                <input className='form-input' type="text" id="size" name="size" value={newCandle.size} onChange={handleChange}/>
+            </label><br/><br/>
+            <label><span className='form-label'>Price: {"   "} </span>
+                <input className='form-input' type="text" id="price" name="price" value={newCandle.price} onChange={handleChange}/>
+            </label><br/><br/>
+            <label className='image-input'><span className='form-label'>Image Url: {"   "} </span>
+                <input className='form-input' type="text" id="image_url" name="image_url" value={newCandle.image_url} onChange={handleChange}/>
+            </label><br/><br/>
+            <input type="submit" value="Submit"/><br/><br/>
         </form>
+        <div className='error-container'>
         {errors.map((error) => {
-            return <li key={error}>{error}</li>
+            return <li className='error' key={error}>{error}</li>
         })}
+        </div>
     </div>
   )
 }
