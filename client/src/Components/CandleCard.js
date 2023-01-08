@@ -70,7 +70,9 @@ export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles
   return (
     <div className='candle-card'>
         <h3 className='card-title'>{name}</h3>
-        <img className='card-image' src={image_url} alt={name}/> 
+        <Link to={`/candles/${candle.id}`}>
+          <img className='card-image' src={image_url} alt={name}/> 
+        </Link>
         <p><i>Notes: {notes}</i></p>
         <p className='card-info'>{price} | {size} | {producer}</p>
         <div className='card-engage'>
