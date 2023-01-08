@@ -16,16 +16,6 @@ class CandlesController < ApplicationController
         render json: candle
     end
 
-    def update
-        @candle.update!(candle_params)
-        render json: @candle
-    end
-
-    def destroy
-        @candle.destroy
-        head :no_content
-    end
-
     private
 
     def candle_params

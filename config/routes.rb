@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :users, only: [:show, :create, :index]
-  resources :candles
+  resources :users, only: [:show, :create]
+  resources :candles, only: [:index, :show, :create]
   resources :favorites, only: [:create]
   resources :reviews, only: [:create, :destroy]
   patch "/reviews", to: "reviews#update"
