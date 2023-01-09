@@ -146,6 +146,21 @@ code {
   float: left;
   font-size: 60px;
   color: black;
+  margin-bottom: -2px;
+  padding-bottom: 0;
+}
+
+.nav-image-container {
+  float: left;
+}
+
+.nav-title-container {
+  float: right;
+}
+
+
+.nav-logo {
+  height: 5rem; 
 }
 
 .links {
@@ -153,6 +168,10 @@ code {
   justify-content: space-between;
   margin-top: 1.3rem;
   font-size: 25px;
+}
+
+.mobile-links {
+  display: none;
 }
 
 .nav-add {
@@ -352,7 +371,7 @@ code {
 
 }
 
-@media screen and (max-width: 575px){
+@media screen and (max-width: 610px){
 
   .navbar{
     height: 50px;
@@ -362,15 +381,31 @@ code {
     font-size: 40px;
   }
 
+  .nav-logo {
+    height: 3.2rem;
+  }
+
   .links {
-    font-size: 18px;
-    margin-top: 1rem;
+    display: none;
+    /* font-size: 18px;
+    margin-top: 1rem; */
+  }
+
+  .mobile-links {
+    display: inline-block;
+    color: black;
+    float: right;
+    justify-content: space-between;
+    margin-top: .8rem;
+    margin-right: 1rem;
+    font-size: 25px;
   }
 
   .nav-add { 
-    width: 7rem;
+    width: 5rem;
     font-weight: 600;
-    margin-right: .5rem;
+    margin-right: .8rem;
+    padding-bottom: .4rem;
     height: 28px;
   }
 
