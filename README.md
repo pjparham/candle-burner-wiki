@@ -4,7 +4,7 @@ Burner is a SAP built with Ruby on Rails and React. To use Burner, a user must m
 
 ## Installation
 
-Clone the repository to your local environment. install Ruby package bundle and install packages from client. Run R
+Clone the repository to your local environment. install Ruby package bundle and install packages from client. 
 
 ```console
 git clone git@github.com:pjparham/candle-burner-wiki.git
