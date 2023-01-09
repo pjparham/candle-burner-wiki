@@ -1,6 +1,6 @@
 # Burner
 
-Burner is a SAP build with Ruby on Rails and React. To use Burner, a user must make an account. Once logged in, a user can see a collection of user-submitted candles with information on the notes, size, and price of the candles. Users can add candles to their favorites and post pubic reviews of candles for other users to see. The candle collection is searchable. Logged in users can submit new candles to the collection, and they can naviagate to their profiles that display of their reviews and favorites. 
+Burner is a SAP built with Ruby on Rails and React. To use Burner, a user must make an account. Once logged in, a user can see a collection of user-submitted candles with information on the notes, size, and price of the candles. Users can add candles to their favorites and post pubic reviews of candles for other users to see. The candle collection is searchable. Logged in users can submit new candles to the collection, and they can naviagate to their profiles that display of their reviews and favorites. 
 
 ## Installation
 
