@@ -11,8 +11,6 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-   
-  
   monospace;
 }
 
@@ -30,7 +28,7 @@ code {
 }
 
 .search-input-container {
-  width: 50%;
+  width: 40%;
   float: right;
 }
 
@@ -161,6 +159,7 @@ code {
 
 .nav-logo {
   height: 5rem; 
+  margin-right: .3rem;
 }
 
 .links {
@@ -320,18 +319,23 @@ code {
 }
 
 
-
-@media screen and (max-width: 735px){
+@media screen and (max-width: 765px){
 
   .search-container {
     width: 95%;
     font-size: 18px;
+    margin-right: 8rem;
     padding: 20px 5px;
   }
+
 
   .search-input {
     font-size: 18px;
     width: 150px;
+  }
+
+  .search-input-container {
+    margin-right: 1rem;
   }
 
   .candle-container{
@@ -383,7 +387,9 @@ code {
 
   .nav-logo {
     height: 3.2rem;
+    margin-right: .2rem;
   }
+
 
   .links {
     display: none;

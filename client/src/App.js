@@ -21,9 +21,6 @@ function App() {
     .then((candles) => setCandles(candles))    
   }, [])
 
-
-
-
   useEffect(()=> {
     fetch('/auth')
     .then(res => {
