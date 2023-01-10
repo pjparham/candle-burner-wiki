@@ -40,11 +40,15 @@ export default function CandleContainer({candles, favoriteCandles, setFavoriteCa
         <input className='search-input' type='text' value={search} onChange={(e) => setSearch(e.target.value)}></input>
       </div>
     </div>
-    <div onClick={() => setIsOpen(!isOpen)}>Filter by:</div>
-    {isOpen ?
-     <><div title='review' onClick={handleFilter}>Review Count</div>
-      <div title='favorite' onClick={handleFilter}>Favorite Count</div>
-      <div title='recent' onClick={handleFilter}>Recently added</div></> : null}
+    <div className='filter-container'>
+      <div className='filter-button' onClick={() => setIsOpen(!isOpen)}>Sort</div>
+      {isOpen ?
+      <div className='filter-options'>
+        <div className='filter-option filter-single-option' title='review' onClick={handleFilter}>Reviews</div>
+        <div className='filter-option filter-single-option' title='favorite' onClick={handleFilter}>Favorites</div>
+        <div className='filter-option' title='recent' onClick={handleFilter}>Recently added</div>
+      </div> : null}
+    </div>
     <div className='candle-container'>{displayCandleCards}</div>
     </>
   )

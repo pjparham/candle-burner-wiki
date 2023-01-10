@@ -121,6 +121,39 @@ code {
   font-family: 'Merriweather', serif;
 }
 
+.filter-container {
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.filter-button {
+  background: white;
+  width: 7rem;
+  margin: auto;
+  border-radius: 2rem;
+  font-weight: 800;
+  color: #5c787b;
+  font-size: 25px;
+  border: 2px solid #5c787b;
+}
+
+.filter-options {
+  width: 70%;
+  display: flex;
+  margin: auto;
+}
+
+.filter-option {
+  background: white;
+  width: 30%;
+  margin: 1.5rem 1rem;
+  font-size: 24px;
+  border: 2px solid #5c787b;
+  border-radius: 100px;
+  color: #5c787b;
+  font-weight: 600;
+}
+
 .error-container {
   text-align: center;
 }
@@ -251,6 +284,7 @@ code {
   text-decoration: none;
 }
 
+
 .profile-review {
   background: #e8e8e8;
   margin: 10px 3px 10px 3px;
@@ -318,6 +352,14 @@ code {
   margin-bottom: 1rem;
 }
 
+@media screen and (max-width: 900px){
+  .filter-single-option {
+    line-height: 3em;
+  }
+}
+
+
+
 
 @media screen and (max-width: 765px){
 
@@ -352,6 +394,20 @@ code {
     width: 15rem;
   }
 
+  .filter-options {
+    width: 95%;
+  }
+
+  .filter-option {
+    font-size: 16px;
+    height: 3rem;
+    width: 33%;
+    border-radius: 25px;
+    padding: 8px;
+  }
+
+ 
+
   .form {
     width: 90%;
   }
@@ -375,7 +431,7 @@ code {
 
 }
 
-@media screen and (max-width: 610px){
+@media screen and (max-width: 620px){
 
   .navbar{
     height: 50px;
@@ -417,6 +473,14 @@ code {
 
   .nav-profile {
     margin-right: .5rem;
+  }
+
+  .filter-container {
+    margin-top: 3rem;
+  }
+
+  .filter-options {
+    margin-bottom: -2rem;
   }
 
 }
