@@ -127,14 +127,22 @@ code {
 }
 
 .filter-button {
-  background: white;
   width: 7rem;
   margin: auto;
   border-radius: 2rem;
   font-weight: 800;
-  color: #5c787b;
   font-size: 25px;
   border: 2px solid #5c787b;
+  transition: all 0.2s ease-in-out;
+  color: white;
+  background: #5c787b;
+  font-weight: 100;
+}
+
+.filter-button:hover {
+  transition: all 0.2s ease-in-out;
+  color: #5c787b;
+  background: white;
 }
 
 .filter-options {
@@ -144,14 +152,23 @@ code {
 }
 
 .filter-option {
-  background: white;
+  color: white;
   width: 30%;
   margin: 1.5rem 1rem;
   font-size: 24px;
   border: 2px solid #5c787b;
   border-radius: 100px;
+  background: #5c787b;
+  font-weight: 100;
+  transition: all 0.2s ease-in-out;
+  font-weight: 300;
+}
+
+.filter-option:hover {
+  background: white;
   color: #5c787b;
-  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  font-weight: 100;
 }
 
 .error-container {
@@ -215,6 +232,14 @@ code {
   border-radius: 17px;
   font-weight: 600;
   color: black;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-add:hover {
+  transition: all 0.2s ease-in-out;
+  color: white;
+  background: #5c787b;
+  font-weight: 100;
 }
 
 .nav-profile {
@@ -307,6 +332,14 @@ code {
   font-weight: 600;
   color: black;
   margin-bottom: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.logout-button:hover {
+  transition: all 0.2s ease-in-out;
+  color: white;
+  background: #5c787b;
+  font-weight: 100;
 }
 
 .review-container {
@@ -343,6 +376,13 @@ code {
   top: 0;
   /* position: absolute; */
 }
+
+.review-delete:hover {
+  transition: all 0.2s ease-in-out;
+  color: white;
+  background: #5c787b;
+}
+
 .review-input {
   width: 60%;
   height: 7rem;
