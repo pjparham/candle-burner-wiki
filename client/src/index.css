@@ -75,6 +75,7 @@ code {
 .card-favorite {
   float: left;
   width: 50%;
+  cursor: pointer;
 }
 
 .card-review {
@@ -137,6 +138,7 @@ code {
   color: white;
   background: #5c787b;
   font-weight: 100;
+  cursor: pointer;
 }
 
 .filter-button:hover {
@@ -162,6 +164,7 @@ code {
   font-weight: 100;
   transition: all 0.2s ease-in-out;
   font-weight: 300;
+  cursor: pointer;
 }
 
 .filter-option:hover {
@@ -333,6 +336,7 @@ code {
   color: black;
   margin-bottom: 1rem;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .logout-button:hover {
@@ -374,6 +378,7 @@ code {
   font-weight: 900;
   float: right;
   top: 0;
+  cursor: pointer;
   /* position: absolute; */
 }
 
