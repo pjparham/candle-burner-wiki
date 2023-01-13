@@ -112,12 +112,6 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
               .then((r) => r.json())
               .then((newReview) => addReview(newReview))
               setReview("")
-            //   updateCandles()
-            //   reviews = candle.reviews
-            //   setCurrentUser({
-            //     ...currentUser,
-            //     reviews: [...currentUser.reviews, reviews[-1]]
-            //   })
         }
     }
 

@@ -14,6 +14,7 @@ class Candle < ApplicationRecord
 
     def price_has_correct_format
         errors.add(:price, "Must being with $") unless price.downcase.start_with?('$')
-      end
+    end
 
 end
+

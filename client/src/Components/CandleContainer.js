@@ -19,9 +19,6 @@ export default function CandleContainer({candles, favoriteCandles, setFavoriteCa
       else { return candle2.id - candle1.id}
     })
 
-  // console.log(filteredCandles)
-
-
   const displayCandleCards = searchedCandles.map((candle) => {
     return <CandleCard currentUser={currentUser} candles={candles} updateCandles={updateCandles} setCandles={setCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} key={candle.id} candle={candle}/>
   })
@@ -30,7 +27,6 @@ export default function CandleContainer({candles, favoriteCandles, setFavoriteCa
     setFilterState(e.target.title)
     setIsOpen(false)
   }
-
 
   return (
     <>

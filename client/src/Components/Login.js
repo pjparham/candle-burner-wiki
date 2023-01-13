@@ -30,23 +30,23 @@ export default function Login({setCurrentUser}) {
         })
     }
 
-  return (
-    <div>
-        <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
-            <label>
-                Username
-                <br />
-                <input type="text" id="username" name="username" value={user.username} onChange={handleChange}/>
-            </label><br/>
-            <label>
-                Password
-                <br />
-                <input type="password" id="password" name="password" value={user.password} onChange={handleChange}/>
-            </label> <br/>
-            <input type="submit" value="Log in"/>
-        </form>
-        <div>Don't have an account yet? Sign up <NavLink to="/signup">here.</NavLink></div>
-    </div>
-  )
+    return (
+        <div className='login-container'>
+            <h1>Login</h1>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    <input className="login-input"placeholder="Username" type="text" id="username" name="username" value={user.username} onChange={handleChange}/>
+                </label>
+                <label>
+                    <br />
+                    <input className="login-input" placeholder="Password" type="password" id="password" name="password" value={user.password} onChange={handleChange}/>
+                </label> <br/>
+                <div className='login-button-container'>
+                    <div onClick={handleSubmit} className='login-button'>Login</div>
+                    <NavLink to="/signup"><div className='login-signup-button'>Sign-Up</div></NavLink>
+                </div>
+            </form>
+        </div>
+    )
 }
+
