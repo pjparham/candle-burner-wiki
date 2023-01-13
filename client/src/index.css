@@ -465,6 +465,19 @@ code {
   border: 1px solid #5b787b;
 }
 
+.signup-button-container {
+  width: 250px;
+  margin: auto;
+  font-size: 20px;
+  height: 40px;
+}
+
+.signup-button {
+  float: none;
+  margin: auto;
+  font-size: 20px;
+}
+
 #email {
   margin-bottom: 1rem;
 }

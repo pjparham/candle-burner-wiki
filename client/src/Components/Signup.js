@@ -39,35 +39,27 @@ export default function Signup() {
 
 
   return (
-    <div>
+    <div className='login-container'>
         <h1>Signup</h1>
-        <form onSubmit={handleSubmit}>
+        <form>
             <label>
-                Pick your username
-                <br />
-                <input type="text" id="username" name="username" value={newUser.username} onChange={handleChange}/>
+                <input className="login-input" placeholder="Username" type="text" id="username" name="username" value={newUser.username} onChange={handleChange}/>
             </label><br/>
             <label>
-                Password
-                <br />
-                <input type="password" id="password" name="password" value={newUser.password} onChange={handleChange}/>
+                <input className="login-input" placeholder="Password" type="password" id="password" name="password" value={newUser.password} onChange={handleChange}/>
             </label> <br/>
             <label>
-                First Name
-                <br />
-                <input type="text" id="first_name" name="first_name" value={newUser.first_name} onChange={handleChange}/>
+                <input className="login-input" placeholder="First Name" type="text" id="first_name" name="first_name" value={newUser.first_name} onChange={handleChange}/>
             </label> <br/>
             <label>
-                Last Name
-                <br />
-                <input type="text" id="last_name" name="last_name" value={newUser.last_name} onChange={handleChange}/>
+                <input className="login-input" placeholder="Last Name" type="text" id="last_name" name="last_name" value={newUser.last_name} onChange={handleChange}/>
             </label> <br/>
             <label>
-                E-mail
-                <br />
-                <input type="text" id="email" name="email" value={newUser.email} onChange={handleChange}/>
+                <input className="login-input" placeholder="E-mail" type="text" id="email" name="email" value={newUser.email} onChange={handleChange}/>
             </label> <br/>
-            <input type="submit" value="Sign-Up"/>
+            <div className='signup-buton-container'>
+                <div onClick={handleSubmit} className='login-signup-button signup-button'>Sign-Up</div>
+            </div>
         </form>
         <div className='error-container'>
         {errors.map((error) => {
