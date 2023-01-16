@@ -24,6 +24,16 @@ You can use the following commands to run the application:
 - `npm start --prefix client`: run the frontend on
   [http://localhost:4000](http://localhost:4000)
 
+
+## Usage
+
+![burner login](/Github%20images/burner_login_mobile_view.png)
+![burner signup](/Github%20images/burner_signup_mobile_view.png)
+![burner hompage](/Github%20images/burner_homepage_mobile_view.png)
+![burner reviews](/Github%20images/burner_reviews_mobile_view.png)
+![burner candle form](/Github%20images/burner_candle_form_mobile_view.png)
+
+
 <!-- ## Usage
 
 ```python

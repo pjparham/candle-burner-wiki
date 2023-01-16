@@ -60,6 +60,7 @@ export default function Signup() {
             <div className='signup-buton-container'>
                 <div onClick={handleSubmit} className='login-signup-button signup-button'>Sign-Up</div>
             </div>
+            <input type="submit" style={{display: "none"}}/>
         </form>
         <div className='error-container'>
         {errors.map((error) => {

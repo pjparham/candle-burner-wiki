@@ -45,6 +45,7 @@ export default function Login({setCurrentUser}) {
                     <div onClick={handleSubmit} className='login-button'>Login</div>
                     <NavLink to="/signup"><div className='login-signup-button'>Sign-Up</div></NavLink>
                 </div>
+                <input type="submit" style={{display: "none"}}/>
             </form>
         </div>
     )
