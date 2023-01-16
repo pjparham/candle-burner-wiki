@@ -391,6 +391,11 @@ code {
 .review-input {
   width: 60%;
   height: 7rem;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: 'Nunito', sans-serif;
 }
 
 .login-container {
