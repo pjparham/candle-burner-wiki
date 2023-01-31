@@ -12,7 +12,7 @@ export default function Navbar( {currentUser, name }) {
           </div>
         </NavLink>
         <div className="links">
-          {currentUser ? <NavLink to="/candles/new">
+          {currentUser ? <NavLink to="/-candles/new">
             <div className="nav-add">Add candle</div>
           </NavLink> : null }
           <NavLink to={currentUser ? `/profile`: '/signup'}>
@@ -20,7 +20,7 @@ export default function Navbar( {currentUser, name }) {
           </NavLink>
         </div>
         <div className='mobile-links'>
-          {currentUser ? <NavLink to="/candles/new">
+          {currentUser ? <NavLink to="/-candles/new">
             <div className="nav-add">New</div>
           </NavLink> : null }
           <NavLink to={currentUser ? `/profile`: '/signup'}>

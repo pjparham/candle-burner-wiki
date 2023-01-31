@@ -70,7 +70,7 @@ export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles
   return (
     <div className='candle-card'>
         <h3 className='card-title'>{name}</h3>
-        <Link to={`/candles/${candle.id}`}>
+        <Link to={`/-candles/${candle.id}`}>
           <img className='card-image' src={image_url} alt={name}/> 
         </Link>
         <p><i>Notes: {notes}</i></p>
@@ -80,7 +80,7 @@ export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles
             {liked.includes(true) ? <i className="fa-solid fa-heart"></i> :  <i className="fa-regular fa-heart"></i>} 
             {" "}{candle.favorites.length === 1 ? (candle.favorites.length) + " Like" : (candle.favorites.length) + " Likes"}
             </div>
-          <Link to={`/candles/${candle.id}`}>
+          <Link to={`/-candles/${candle.id}`}>
             <div className='card-review'><i className="fa-regular fa-comment"></i> {" "}{candle.reviews.length === 1 ? (candle.reviews.length ) + " Review" : (candle.reviews.length ) + " Reviews"}</div>
           </Link>
         </div>

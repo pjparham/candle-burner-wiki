@@ -74,8 +74,8 @@ function App() {
       <Navbar  currentUser={currentUser} name={currentUser.first_name + " " + currentUser.last_name}/>
       <Routes>
         <Route exact path='/' element={<CandleContainer currentUser={currentUser} updateCandles={updateCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} candles={candles} setCandles={setCandles}/>}/>
-        <Route path='/candles/new' element={<CandleForm addCandle={addCandle}/>}/>
-        <Route path ='/candles/:id' element={<CandlePage 
+        <Route path='/-candles/new' element={<CandleForm addCandle={addCandle}/>}/>
+        <Route path ='/-candles/:id' element={<CandlePage 
                                                 updateCandles={updateCandles}
                                                 userReviews={userReviews}
                                                 setUserReviews={setUserReviews}
