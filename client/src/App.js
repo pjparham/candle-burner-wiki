@@ -15,12 +15,14 @@ function App() {
   const [favoriteCandles, setFavoriteCandles] = useState([])
   const [userReviews, setUserReviews] = useState([])
 
+  //fetch candles from backend
   useEffect(() => {
     fetch("/candles")
     .then((r) => r.json())
     .then((candles) => setCandles(candles))    
   }, [])
 
+  //auto login user if stored in session
   useEffect(()=> {
     fetch('/auth')
     .then(res => {

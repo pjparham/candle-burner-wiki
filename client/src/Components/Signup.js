@@ -22,7 +22,6 @@ export default function Signup() {
 
     function handleSubmit(e){
         e.preventDefault()
-   
         fetch('/users', {
             method: "POST",
             headers: {"Content-Type":"application/json"},

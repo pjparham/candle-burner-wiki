@@ -26,7 +26,6 @@ export default function Navbar( {currentUser, name }) {
           <NavLink to={currentUser ? `/profile`: '/signup'}>
             <div className="nav-profile">{currentUser ? 'Me' : "Sign up"}</div>
           </NavLink>
-            {/* <div className='mobile-bars'><i className="fa-solid fa-bars"></i></div> */}
         </div>
     </div>
   )

@@ -7,8 +7,10 @@ export default function CandlePage({ candles, setCandles, favoriteCandles, setFa
 
     let candle = candles.find(candle => candle.id === parseInt(params.id))
 
+    //declare liked to be used in global state
     let liked
     
+    //prevents error from trying to read candle.favorites before candle loads
     if (candles.length != 0){
       liked = candle.favorites.map((favorite)=> {
         if (favorite.user_id === currentUser.id){
@@ -16,16 +18,12 @@ export default function CandlePage({ candles, setCandles, favoriteCandles, setFa
         } else {return false}
       })
     }
- 
- 
-
- 
-
-  
 
     function updateFavorites(newFavorite){
+      //updates favoriteCandles
       let newFavorites = [...favoriteCandles, newFavorite.candle.name]
       setFavoriteCandles(newFavorites)
+      //updates candles state
       let updatedCandles = candles.map((aCandle) => {
         if (aCandle.id === candle.id){
           let updatedCandle = {

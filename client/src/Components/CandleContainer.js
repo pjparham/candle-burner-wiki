@@ -6,10 +6,12 @@ export default function CandleContainer({candles, favoriteCandles, setFavoriteCa
   const [isOpen, setIsOpen] = useState(false)
   const [filterState, setFilterState] = useState('recent')
 
-  let searchedCandles = candles.filter((candle) => candle.name.toLowerCase().includes(search.toLowerCase()))
 
-  let filteredCandles = searchedCandles
-    .sort((candle1, candle2) => {
+  // shows candles with names included in the search, shows all candles when search is blank
+  let searchedCandles = candles.filter((candle) => candle.name.toLowerCase().includes(search.toLowerCase()))
+  
+  // sorts candle array based on filter input
+  searchedCandles.sort((candle1, candle2) => {
       if (filterState === "review"){
         return candle2.reviews.length - candle1.reviews.length
       }

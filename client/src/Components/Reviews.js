@@ -78,17 +78,6 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
             "body": review,
             "candle_id": candle.id
         }
-        // if(hasReviewed){
-        //     fetch('/reviews', {
-        //         method: "PATCH",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify(newReview)
-        //     })
-        //     .then((r) => r.json())
-        //     .then((updatedReview) => updateReviews(updatedReview) )
-        //     setReview("")
         fetch('/reviews', {
             method: "POST",
             headers: {
@@ -109,7 +98,6 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
     <div className="reviews-container">
         <h1 className="reviews-title">Reviews</h1>
         {displayReviews}
-        {/* <h1>{hasReviewed ? "Update your review:" : "Write your own review:"}</h1> */}
         <h1>Write a review:</h1>
         <form onSubmit={onSubmit}>
             <textarea value={review} onChange={e => setReview(e.target.value)} className="review-input" type="textarea" id="review" name="review"></textarea><br></br>

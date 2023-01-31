@@ -23,17 +23,6 @@ export default function Review({review, onDelete, currentUser, updateReviews }) 
     .then((r) => r.json())
     .then((updatedReview) => updateReviews(updatedReview))
     setEditing(false)
-            // if(hasReviewed){
-        //     fetch('/reviews', {
-        //         method: "PATCH",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify(newReview)
-        //     })
-        //     .then((r) => r.json())
-        //     .then((updatedReview) => updateReviews(updatedReview) )
-        //     setReview("")
   }
 
 

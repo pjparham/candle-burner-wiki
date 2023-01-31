@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles, candles, setCandles, currentUser }) {
   const { name, notes, price, producer, image_url, size } = candle
 
+
+  // Bool indicating is user has liked candle
   let liked = candle.favorites.map((favorite)=> {
     if (favorite.user_id === currentUser.id){
       return true
@@ -11,8 +13,10 @@ export default function CandleCard({ candle, favoriteCandles, setFavoriteCandles
   })
 
   function updateFavorites(newFavorite){
+    //updates favoriteCandles state
     let newFavorites = [...favoriteCandles, newFavorite.candle.name]
     setFavoriteCandles(newFavorites)
+    //updates candles state
     let updatedCandles = candles.map((aCandle) => {
       if (aCandle.id === candle.id){
         let updatedCandle = {
