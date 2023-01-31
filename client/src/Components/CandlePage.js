@@ -4,13 +4,24 @@ import Reviews from './Reviews'
 
 export default function CandlePage({ candles, setCandles, favoriteCandles, setFavoriteCandles, currentUser, setCurrentUser, updateCandles, userReviews, setUserReviews}) {
     const params = useParams()
+
     let candle = candles.find(candle => candle.id === parseInt(params.id))
 
-    let liked = candle.favorites.map((favorite)=> {
-      if (favorite.user_id === currentUser.id){
-        return true
-      } else {return false}
-    })
+    let liked
+    
+    if (candles.length != 0){
+      liked = candle.favorites.map((favorite)=> {
+        if (favorite.user_id === currentUser.id){
+          return true
+        } else {return false}
+      })
+    }
+ 
+ 
+
+ 
+
+  
 
     function updateFavorites(newFavorite){
       let newFavorites = [...favoriteCandles, newFavorite.candle.name]
