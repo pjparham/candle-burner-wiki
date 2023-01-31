@@ -78,6 +78,11 @@ export default function CandlePage({ candles, setCandles, favoriteCandles, setFa
           .then((newFavorite) => updateFavorites(newFavorite))
         }
       }
+    if (candles.length == 0){
+      return (
+        <></>
+      )
+    }
 
   return (
     <>
