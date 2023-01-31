@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function ProfileReviews({ review }) {
+export default function ProfileReview({ review }) {
     let reviewPreview = review.body.slice(0, 15)
   return (
     <Link className='profile-link' to={`/candles/${review.candle.id}`}>

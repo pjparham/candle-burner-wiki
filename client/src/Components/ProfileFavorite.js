@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function ProfileFavorites({ candle }) {
+export default function ProfileFavorite({ candle }) {
   return (
     <div className="profile-favorite-card">
         <Link className='profile-link' to={`/candles/${candle.id}`}>

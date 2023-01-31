@@ -1,6 +1,6 @@
 import React from 'react'
-import ProfileFavorites from './ProfileFavorites'
-import ProfileReviews from './ProfileReviews'
+import ProfileFavorite from './ProfileFavorite'
+import ProfileReview from './ProfileReview'
 import { useNavigate } from 'react-router-dom'
 
 export default function Profile({ user, onLogout, userReviews, candles, favoriteCandles }) {
@@ -12,11 +12,11 @@ export default function Profile({ user, onLogout, userReviews, candles, favorite
     })
 
     let displayFavorites = allFavoriteCandles.map((candle) => {
-        return <ProfileFavorites key={candle.id} candle={candle}/>
+        return <ProfileFavorite key={candle.id} candle={candle}/>
     })
 
     let displayReviews = userReviews.map((review) => {
-        return <ProfileReviews review={review} key={review.id}/>
+        return <ProfileReview review={review} key={review.id}/>
     })
 
     const navigate = useNavigate()

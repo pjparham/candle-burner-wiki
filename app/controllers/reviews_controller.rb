@@ -19,12 +19,6 @@ class ReviewsController < ApplicationController
         head :no_content
     end
 
-    def long_reviews
-        user = User.find(session[:user_id])
-        reviews = user.reviews.filter { |review| review.body.split.length > params[:number].to_i }
-        render json: reviews
-    end
-
     private 
 
     def review_params
