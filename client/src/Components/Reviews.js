@@ -122,7 +122,7 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
         <h1>{hasReviewed ? "Update your review:" : "Write your own review:"}</h1>
         <form onSubmit={onSubmit}>
             <textarea value={review} onChange={e => setReview(e.target.value)} className="review-input" type="textarea" id="review" name="review"></textarea><br></br>
-            <input className='review-submit' type="submit" value="Submit"/>
+            <div onClick={onSubmit} className='review-submit-button'>Submit</div>
         </form>
     </div>
   )

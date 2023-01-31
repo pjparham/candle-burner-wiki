@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
     def create
         user = User.find(session[:user_id])
-        review = Review.create(body: params[:body], user_id: user.id, candle_id: params[:candle_id])
+        review = user.reviews.create(body: params[:body], candle_id: params[:candle_id])
         render json: review
     end
 
@@ -13,9 +13,16 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        review = Review.find(params[:id])
+        user = User.find(session[:user_id])
+        review = user.reviews.find_by(id: params[:id])
         review.destroy
         head :no_content
+    end
+
+    def long_reviews
+        user = User.find(session[:user_id])
+        reviews = user.reviews.filter { |review| review.body.split.length > params[:number].to_i }
+        render json: reviews
     end
 
     private 

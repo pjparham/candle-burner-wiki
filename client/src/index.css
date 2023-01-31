@@ -398,6 +398,26 @@ code {
   font-family: 'Nunito', sans-serif;
 }
 
+.review-submit-button {
+  transition: all 0.2s ease-in-out;
+  width: 7rem;
+  margin: 1rem auto;
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 30px;
+  color: #5b787b;
+  font-weight: 600;
+  background: white;
+  border: 2px solid #5b787b;
+}
+
+.review-submit-button:hover {
+  transition: all 0.2s ease-in-out;
+  color: white;
+  background: #5c787b;
+
+}
+
 .login-container {
   width: 300px;
   margin: auto;
