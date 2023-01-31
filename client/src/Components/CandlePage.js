@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Reviews from './Reviews'
 
-export default function CandlePage({ candles, setCandles, favoriteCandles, setFavoriteCandles, currentUser, setCurrentUser, updateCandles, userReviews, setUserReviews}) {
+export default function CandlePage({ candles, setCandles, favoriteCandles, setFavoriteCandles, currentUser, setCurrentUser, userReviews, setUserReviews}) {
     const params = useParams()
 
     let candle = candles.find(candle => candle.id === parseInt(params.id))

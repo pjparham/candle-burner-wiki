@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import CandleCard from './CandleCard'
 
-export default function CandleContainer({candles, favoriteCandles, setFavoriteCandles, setCandles, updateCandles, currentUser }) {
+export default function CandleContainer({candles, favoriteCandles, setFavoriteCandles, setCandles, currentUser }) {
   const [search, setSearch] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [filterState, setFilterState] = useState('recent')
@@ -20,7 +20,7 @@ export default function CandleContainer({candles, favoriteCandles, setFavoriteCa
     })
 
   const displayCandleCards = searchedCandles.map((candle) => {
-    return <CandleCard currentUser={currentUser} candles={candles} updateCandles={updateCandles} setCandles={setCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} key={candle.id} candle={candle}/>
+    return <CandleCard currentUser={currentUser} candles={candles} setCandles={setCandles} setFavoriteCandles={setFavoriteCandles} favoriteCandles={favoriteCandles} key={candle.id} candle={candle}/>
   })
 
   function handleFilter(e){
