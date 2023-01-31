@@ -5,14 +5,6 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
     //state for controlled form
     const [review, setReview] = useState("")
 
-
-
-    //gets array of usernames for users that have reviewed current candle
-    let reviewers = candle.reviews.map((review) => review.user.username)
-
-    //returns bool of whether or not current user has reviewed current candle
-    let hasReviewed = reviewers.includes(currentUser.username)
-
     function onDelete(deletedReview){
         fetch(`/reviews/${deletedReview.id}`, {
           method: "DELETE",
@@ -37,10 +29,6 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
             }
         })
       }
-
-    let displayReviews = candle.reviews.map((review) => {
-        return <Review onDelete={onDelete} currentUser={currentUser} review={review} key={review.id}/>
-    })
 
 
     function updateReviews(updatedReview){
@@ -90,36 +78,39 @@ export default function Reviews({candle, currentUser, setCurrentUser, updateCand
             "body": review,
             "candle_id": candle.id
         }
-        if(hasReviewed){
-            fetch('/reviews', {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newReview)
+        // if(hasReviewed){
+        //     fetch('/reviews', {
+        //         method: "PATCH",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //         body: JSON.stringify(newReview)
+        //     })
+        //     .then((r) => r.json())
+        //     .then((updatedReview) => updateReviews(updatedReview) )
+        //     setReview("")
+        fetch('/reviews', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newReview)
             })
             .then((r) => r.json())
-            .then((updatedReview) => updateReviews(updatedReview) )
+            .then((newReview) => addReview(newReview))
             setReview("")
-        } else{
-            fetch('/reviews', {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newReview)
-              })
-              .then((r) => r.json())
-              .then((newReview) => addReview(newReview))
-              setReview("")
-        }
     }
+
+    let displayReviews = candle.reviews.map((review) => {
+        return <Review updateReviews={updateReviews} onDelete={onDelete} currentUser={currentUser} review={review} key={review.id}/>
+    })
 
   return (
     <div className="reviews-container">
         <h1 className="reviews-title">Reviews</h1>
         {displayReviews}
-        <h1>{hasReviewed ? "Update your review:" : "Write your own review:"}</h1>
+        {/* <h1>{hasReviewed ? "Update your review:" : "Write your own review:"}</h1> */}
+        <h1>Write a review:</h1>
         <form onSubmit={onSubmit}>
             <textarea value={review} onChange={e => setReview(e.target.value)} className="review-input" type="textarea" id="review" name="review"></textarea><br></br>
             <div onClick={onSubmit} className='review-submit-button'>Submit</div>

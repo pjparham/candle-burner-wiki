@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create]
   resources :candles, only: [:index, :show, :create]
   resources :favorites, only: [:create]
-  resources :reviews, only: [:create, :destroy]
-  patch "/reviews", to: "reviews#update"
+  resources :reviews, only: [:create, :destroy, :update]
   delete "/favorites", to: "favorites#destroy"
   post "/login", to: "sessions#create"
   get "/auth", to: "users#show"

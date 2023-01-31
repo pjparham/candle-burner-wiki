@@ -415,7 +415,17 @@ code {
   transition: all 0.2s ease-in-out;
   color: white;
   background: #5c787b;
+}
 
+.review-update {
+  width: 95%;
+  font-family: 'Nunito', sans-serif;
+  height: 3rem;
+  border:  none;
+}
+
+.review-send {
+  margin-bottom: 5px;
 }
 
 .login-container {

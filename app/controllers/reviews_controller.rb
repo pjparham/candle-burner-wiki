@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
 
     def update
         user = User.find(session[:user_id])
-        review = user.reviews.find_by(candle_id: params[:candle_id])
+        review = user.reviews.find_by(id: params[:id])
         review.update(body: params[:body])
         render json: review
     end
